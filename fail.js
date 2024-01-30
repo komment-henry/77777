@@ -1,32 +1,35 @@
 /**
-* @description This function defines a `sample` function that returns an object with
-* an `id` property based on the input `id`. It then attempts to access the `id`
-* property of the returned object from `sample(2)`, which is undefined because
-* `sample(2)` does not return any object.
+* @description This function `sample` is a curried function that returns an object
+* based on the `id` parameter. It takes an `id` and returns an object with the `id`
+* property or an object with `id` and `data` properties if `id` is 3. The code crashes
+* the app because it tries to access `id` from a object returned from `sample(2)`
+* that doesn't have an `id` property.
 * 
-* Therefore the code crashes the app because it is trying to access the `id` property
-* of an undefined object.
-* 
-* @returns { object } The function `sample` is not defined for input `2`, so attempting
-* to access its property `id` will result an exception and crash the app. Therefore
-* the output returned by the function is undefined.
+* @returns { object } The output returned by the `sample` function is undefined for
+* the input `2`. The function only returns a defined value when `id` is `1` or `3`,
+* and `2` does not match either condition. Therefore returning nothing (or `undefined`)
+* is the default behavior of the function.
 */
 const fails = () => {
 /**
-* @description This function takes an `id` parameter and returns an object based on
-* the value of `id`. If `id` is 1 or 3 it will contain only that `id`, but if `id`
-* is 3 it will also include a property named `data` with an empty object.
+* @description This function takes an `id` as input and returns an object with the
+* specified `id` and additional data based on the value of `id`. If `id` is 1 or 3
+* specifically set values will be returned; otherwise {} will be returned for any
+* other id value.
 * 
-* @param { string } id - The `id` input parameter is passed to the function and can
-* have the value of either 1 or 3. It determines which object the function returns
-* based on the current value.
+* @param { number } id - In the given function `sample`, the `id` input parameter
+* is used to determine which object to return based on the value of `id`.
 * 
-* @returns { object } The output returned by the given function `sample` is an object
-* that contains either `id` only for `id===1`, or `id` and a `data` property with
-* an empty object for `id===3`. In other words:
+* @returns { object } The function `sample` takes an integer `id` as input and returns
+* an object based on the value of `id`. For `id` equal to 1`, the function returns
+* an object with a single property `'id'`. For `id` equal to 3`, the function returns
+* an object with two properties: `'id'` and `'data'`. The value of `'data'` is an
+* empty object (`{}`).
 * 
-* 	- For `id=1`, the function returns `{ id }`.
-* 	- For `id=3`, the function returns `{ id: 3 data: {} }`.
+* In other words:
+* 
+* 	- For `id` = 1: { 'id': 1 }
+* 	- For `id` = 3: { 'id': 3 , 'data': {} }
 */
   const sample = (id) => {
     if (id === 1) return { id }
